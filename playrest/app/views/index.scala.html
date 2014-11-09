@@ -1,7 +1,27 @@
-@(message: String)
+@(dummies: List[String])
 
-@main("Welcome to Play") {
+@import helper._
 
-    @play20.welcome(message, style = "Java")
+@main("Dummy List"){
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+if (window.console) {
+  console.log("Welcome to your Play application's JavaScript!");
+  
+  var mySocket = new WebSocket("ws://localhost:9000/start", "dummy");
 
+mySocket.onmessage = function(event){
+ $('ul').append('<li>'+event.data+'</li>').listview('refresh');;
+}
+}
+</script>
+
+<ul id="listJson">
+        @for(dummy <- dummies) {
+            <li>
+                @dummy
+                
+            </li>
+        }
+    </ul>
 }

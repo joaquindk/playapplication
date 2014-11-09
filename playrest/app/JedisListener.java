@@ -13,7 +13,7 @@ public class JedisListener extends JedisPubSub {
 	MongoDbClient dbClient;
 
 	@Override
-	public void onMessage(String arg0, String arg1) {
+	public synchronized void onMessage(String arg0, String arg1) {
 		Logger.info("Message received!!! " + arg0 + "--" + arg1);
 		try {
 			dbClient.getInstance().saveDummy(arg1);
