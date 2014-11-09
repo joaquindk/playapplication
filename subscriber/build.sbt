@@ -1,4 +1,4 @@
-name := """playrest"""
+name := """subscriber"""
 
 version := "1.0-SNAPSHOT"
 
