@@ -1,14 +1,27 @@
+import java.net.UnknownHostException;
+
 import play.Logger;
-import redis.clients.jedis.JedisCommands;
 import redis.clients.jedis.JedisPubSub;
+
+import com.mongodb.MongoException;
 
 
 public class JedisListener extends JedisPubSub {
+	
+	MongoDbClient dbClient;
+	
+	public JedisListener() {
+		try {
+			dbClient = new MongoDbClient();
+		} catch (UnknownHostException | MongoException e) {
+			Logger.error("Error creating mongo connection", e);
+		}
+	}
 
 	@Override
 	public void onMessage(String arg0, String arg1) {
 		Logger.info("Message received!!! " + arg0 + "--" + arg1);
-		
+		dbClient.saveDummy(arg1);
 	}
 
 	@Override
