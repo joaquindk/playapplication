@@ -8,7 +8,7 @@
 if (window.console) {
   console.log("Welcome to your Play application's JavaScript!");
   
-  var mySocket = new WebSocket("ws://localhost:9000/start", "dummy");
+  var mySocket = new WebSocket("ws://ec2-54-217-8-153.eu-west-1.compute.amazonaws.com:9000/start", "dummy");
 
 mySocket.onmessage = function(event){
  $('ul').append('<li>'+event.data+'</li>').listview('refresh');;
