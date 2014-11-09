@@ -9,3 +9,5 @@ GET     /                           controllers.Application.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 PUT /dummy controllers.Application.receiveDummy()
+
+GET /dummy controllers.Application.getAllDummies()
